@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UST Portal Login</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+.bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url('https://png.pngtree.com/thumb_back/fh260/background/20220815/pngtree-facade-of-the-main-building-of-university-of-santo-tomas-in-manila-philippines-photo-image_33221260.jpg') no-repeat center/cover;
+    filter: blur(6px);
+    z-index: -1;
+}
+
+header {
+    width: 100%;
+    padding: 15px;
+    background: #000;
+    color: #f4c300;
+    text-align: center;
+    font-weight: 600;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background: #000;
+    color: #f4c300;
+    text-align: center;
+    font-size: 12px;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    width: 380px;
+    padding: 30px;
+    border-radius: 16px;
+
+    background: linear-gradient(145deg, #fff7e0, #f4c30033);
+    border: 1px solid rgba(244, 195, 0, 0.4);
+
+    box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+    text-align: center;
+}
+
+.logo {
+    width: 85px;
+    height: 85px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 2px solid #f4c300;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 11px;
+    margin: 8px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.toggle-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.switch {
+    position: relative;
+    width: 42px;
+    height: 22px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ccc;
+    border-radius: 22px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.slider:before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 3px;
+    bottom: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+input:checked + .slider {
+    background: #f4c300;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.subtext {
+    font-size: 11px;
+    color: #555;
+    text-align: left;
+    margin-top: 6px;
+    display: none;
+}
+
+button {
+    width: 100%;
+    padding: 11px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#loginBtn {
+    background: #f4c300;
+}
+
+#cancelBtn {
+    background: #222;
+    color: white;
+}
+
+#loginBtn:hover {
+    background: #e0b800;
+}
+
+#cancelBtn:hover {
+    background: #000;
+}
+
+.forgot {
+    margin-top: 12px;
+    font-size: 12px;
+}
+
+.forgot a {
+    text-decoration: none;
+    color: #000;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<header>
+    UNIVERSITY OF SANTO TOMAS • STUDENT PORTAL
+</header>
+
+<div class="container">
+
+    <img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjT7Oeoc7Hll0A86Lipo_WaRCPsr3-SmVq2zcd2S46yUa0vRR0XxLz7Xt_ruO7sVwnLsAwDEmKd5mQmoZI3QfKXX7l7WMC&s&ec=121638510">
+
+    <h2>Login</h2>
+
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+
+    <div class="toggle-container">
+        <span>Stay logged in</span>
+        <label class="switch">
+            <input type="checkbox" id="stayLogin" onclick="toggleMessage()">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <div class="subtext" id="sessionText">
+        Your session will be saved on this device.
+    </div>
+
+    <button id="loginBtn" onclick="function_name()">Login</button>
+    <button id="cancelBtn" onclick="cancelLogin()">Cancel</button>
+
+    <div class="forgot">
+        <a href="#">Forgot Username?</a> | 
+        <a href="#">Forgot Password?</a>
+    </div>
+
+    <div id="errorMsg" class="error"></div>
+</div>
+
+<footer>
+    © 2026 Rodolfo C. Lao III • 9-Ruby
+</footer>
+
+<script>
+let attempt_counter = 0;
+
+function toggleMessage() {
+    let box = document.getElementById("stayLogin");
+    let text = document.getElementById("sessionText");
+
+    text.style.display = box.checked ? "block" : "none";
+}
+
+function function_name(){
+
+let username = document.getElementById("username").value;
+let password = document.getElementById("password").value;
+
+do {
+
+    if (username === "Rodolfo_Lao" && password === "104161200") {
+        alert("Login successful!");
+        attempt_counter = 0;
+        document.getElementById("errorMsg").innerHTML = "";
+        window.location.href = "notebooks.html";
+        break;
+
+    } else if (username === "" && password === "") {
+        alert("Please enter username and password.");
+
+    } else {
+        attempt_counter++;
+        document.getElementById("errorMsg").innerHTML =
+        "Incorrect username and/or password. Attempt " + attempt_counter + " of 3";
+    }
+
+} while (false);
+
+if (attempt_counter >= 3) {
+    alert("Too many failed attempts.");
+    document.getElementById("loginBtn").disabled = true;
+}
+}
+
+function cancelLogin() {
+    let confirmCancel = confirm("Cancel login and clear fields?");
+    
+    if (confirmCancel) {
+        document.getElementById("username").value = "";
+        document.getElementById("password").value = "";
+        document.getElementById("errorMsg").innerHTML = "";
+    }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.bg {
+    position: fixed;
+    top: 0;
+    left: 220px;
+    width: calc(100% - 220px);
+    height: 100%;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/7/7b/400_Year_old_Beauty.jpg') no-repeat center/cover;
+    filter: blur(6px);
+    transform: scale(1.05);
+    z-index: -1;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 220px;
+    height: 100%;
+    background: #000;
+    color: #f4c300;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar h2 {
+    margin-bottom: 15px;
+    color: #f4c300;
+    text-align: center;
+    width: 100%;
+}
+
+.sidebar img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #f4c300;
+    margin-bottom: 15px;
+}
+
+.sidebar a {
+    width: 100%;
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+    transition: 0.2s;
+    text-align: center;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.sidebar a:last-child {
+    border-bottom: none;
+}
+
+.sidebar a:hover {
+    background: #f4c300;
+    color: black;
+}
+
+.main {
+    margin-left: 220px;
+    padding: 30px;
+    min-height: 100vh;
+}
+
+.title {
+    color: #fff;
+    margin-bottom: 25px;
+    font-size: 26px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background: rgba(255,255,255,0.92);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+    transition: 0.3s;
+    cursor: pointer;
+    min-height: 240px;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+.card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+}
+
+.card h3 {
+    padding: 10px 10px 0 10px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.card p {
+    padding: 4px 10px;
+    font-size: 12px;
+    text-align: center;
+    color: #333;
+}
+
+.schedule {
+    font-size: 12px;
+    text-align: center;
+    color: #444;
+    padding-bottom: 12px;
+    font-weight: 500;
+}
+
+footer {
+    position: relative;
+    margin-left: 220px;
+    padding: 18px;
+    background: #000;
+    color: #f4c300;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<div class="sidebar">
+
+    <h2>Menu</h2>
+
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjT7Oeoc7Hll0A86Lipo_WaRCPsr3-SmVq2zcd2S46yUa0vRR0XxLz7Xt_ruO7sVwnLsAwDEmKd5mQmoZI3QfKXX7l7WMC&s&ec=121638510">
+
+    <a href="#">Dashboard</a>
+    <a href="#">Home</a>
+    <a href="#">Classes</a>
+    <a href="#">Settings</a>
+    <a href="#" onclick="logout(event)">Logout</a>
+
+</div>
+
+<div class="main">
+
+    <div class="title">My Classes</div>
+
+    <div class="grid">
+
+        <div class="card">
+            <img src="https://www.ust.edu.ph/wp-content/uploads/2025/10/BS-Chemistry_azure-blue-copy.jpg">
+            <h3>Mathematics</h3>
+            <p>Teacher: Anna V. Doce</p>
+            <div class="schedule">Schedule: TBA</div>
+        </div>
+
+        <div class="card">
+            <img src="https://www.ust.edu.ph/wp-content/uploads/2025/10/BS-Chemistry_azure-blue-copy.jpg">
+            <h3>English</h3>
+            <p>Teacher: Kristin J. Avila</p>
+            <div class="schedule">Schedule: TBA</div>
+        </div>
+
+        <div class="card">
+            <img src="https://www.ust.edu.ph/wp-content/uploads/2025/10/BS-Chemistry_azure-blue-copy.jpg">
+            <h3>P.E.</h3>
+            <p>Teacher: Alfred Cases</p>
+            <div class="schedule">Schedule: TBA</div>
+        </div>
+
+        <div class="card">
+            <img src="https://www.ust.edu.ph/wp-content/uploads/2025/10/BS-Chemistry_azure-blue-copy.jpg">
+            <h3>TLE</h3>
+            <p>Teacher: Hannah R. Del Barrio</p>
+            <div class="schedule">Schedule: TBA</div>
+        </div>
+
+        <div class="card">
+            <img src="https://www.ust.edu.ph/wp-content/uploads/2025/10/BS-Chemistry_azure-blue-copy.jpg">
+            <h3>ICT</h3>
+            <p>Teacher: Renn Santos</p>
+            <div class="schedule">Schedule: TBA</div>
+        </div>
+
+        <div class="card">
+            <img src="https://www.ust.edu.ph/wp-content/uploads/2025/10/BS-Chemistry_azure-blue-copy.jpg">
+            <h3>Science</h3>
+            <p>Teacher: Jullina David</p>
+            <div class="schedule">Schedule: TBA</div>
+        </div>
+
+        <div class="card">
+            <img src="https://www.ust.edu.ph/wp-content/uploads/2025/10/BS-Chemistry_azure-blue-copy.jpg">
+            <h3>Social Studies</h3>
+            <p>Teacher: Jose Fernandez</p>
+            <div class="schedule">Schedule: TBA</div>
+        </div>
+
+        <div class="card">
+            <img src="https://www.ust.edu.ph/wp-content/uploads/2025/10/BS-Chemistry_azure-blue-copy.jpg">
+            <h3>Filipino</h3>
+            <p>Teacher: Jemima Francisco</p>
+            <div class="schedule">Schedule: TBA</div>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    © 2026 Rodolfo C. Lao III • 9-Ruby
+</footer>
+
+<script>
+function logout(event) {
+    event.preventDefault();
+    let confirmLogout = confirm("Are you sure you want to logout?");
+    if (confirmLogout) {
+        window.location.href = "index.html";
+    }
+}
+</script>
+
+</body>
+</html>
