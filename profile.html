@@ -302,7 +302,7 @@ h1{
     <div class="profile-pic">
         <img id="preview" src="https://via.placeholder.com/180" alt="">
     </div>
-    <div class="upload-btn">
+    <div class="upload-btn btn-warning">
         <input type="file" id="photo" accept="image/*">
         <label for="photo">Upload Photo</label>
     </div>
@@ -348,7 +348,7 @@ h1{
     <div class="form-group">
     
 
-    <button type="submit" class="btn">Create Account</button>
+    <button type="submit" class="btn btn-warning">Create Account</button>
 
 </div>
 
@@ -360,11 +360,6 @@ h1{
 
 </div>
 </form>
-
-<footer>
-    © 2026 Quarter 4 Group 1 • 9-Ruby
-</footer>
-
 
 <script>
 function logout(event) {
@@ -383,6 +378,10 @@ document.getElementById("photo").addEventListener("change", function(event) {
     reader.readAsDataURL(event.target.files[0]);
 });
 </script>
+
+    <footer>
+    © 2026 Quarter 4 Group 1 • 9-Ruby
+</footer>
 
 </body>
 </html>
